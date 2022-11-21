@@ -7,6 +7,10 @@ public class Unit : MonoBehaviour
 
     [SerializeField]private Animator unitAnimator;
 
+    private void Awake()
+    {
+        targetPosition = transform.position;
+    }
     private void Update()
     {
         
@@ -25,13 +29,9 @@ public class Unit : MonoBehaviour
             unitAnimator.SetBool("IsWalking", false);
         }
 
-        if(Input.GetKeyDown(KeyCode.Mouse0))
-        {
-            Vector3 mouseClickPosition = MouseWorld.GetPosition();
-            Move(mouseClickPosition);
-        }
+
     }
-    private void Move(Vector3 targerPosition)
+    public void Move(Vector3 targerPosition)
     {
         this.targetPosition = targerPosition;
  
