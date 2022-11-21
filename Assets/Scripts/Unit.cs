@@ -5,6 +5,7 @@ using UnityEngine;
 public class Unit : MonoBehaviour
 {
     private Vector3 targetPosition;
+    [SerializeField]private MouseWorld mouseWorld;
 
     private void Update()
     {
@@ -16,9 +17,10 @@ public class Unit : MonoBehaviour
             transform.position += moveDirection * moveSpeed * Time.deltaTime;
         }
 
-        if(Input.GetKeyDown(KeyCode.T))
+        if(Input.GetKeyDown(KeyCode.Mouse0))
         {
-            Move(new Vector3(4, 0, 4));
+            Vector3 mouseClickPosition = MouseWorld.GetPosition();
+            Move(mouseClickPosition);
         }
     }
     private void Move(Vector3 targerPosition)
