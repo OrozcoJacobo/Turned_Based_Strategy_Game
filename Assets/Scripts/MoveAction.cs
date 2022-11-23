@@ -42,10 +42,10 @@ public class MoveAction : MonoBehaviour
 
     public bool IsValidActionGridPosition(GridPosition gridPosition)
     {
-        List<GridPosition> validGridPositionList = GetValidActionGridPosition();
+        List<GridPosition> validGridPositionList = GetValidActionGridPositionList();
         return validGridPositionList.Contains(gridPosition);
     }
-    public List<GridPosition> GetValidActionGridPosition()
+    public List<GridPosition> GetValidActionGridPositionList()
     {
         List<GridPosition> validGridPositionList = new List<GridPosition>();   
         
