@@ -6,7 +6,7 @@ public class GridObject
     private GridSystem gridSystem;
     private List<Unit> unitList;
 
-    public GridObject( GridSystem gridSystem, GridPosition gridPosition)
+    public GridObject(GridSystem gridSystem, GridPosition gridPosition)
     {
         this.gridPosition = gridPosition;
         this.gridSystem = gridSystem;
