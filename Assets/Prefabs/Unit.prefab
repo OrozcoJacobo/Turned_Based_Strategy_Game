@@ -108,6 +108,7 @@ GameObject:
   - component: {fileID: 5482698932470753613}
   - component: {fileID: 5482698932470753650}
   - component: {fileID: 5467042896308644065}
+  - component: {fileID: 3359305246571504472}
   m_Layer: 7
   m_Name: Unit
   m_TagString: Untagged
@@ -144,8 +145,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 22d9a63f93ca79046ba954213086baed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mouseWorld: {fileID: 0}
-  unitAnimator: {fileID: 5567074195991603567}
 --- !u!65 &5467042896308644065
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -159,6 +158,19 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.5433309, y: 2.264592, z: 0.47171426}
   m_Center: {x: -0.0173918, y: 0.63229525, z: 0.0019136071}
+--- !u!114 &3359305246571504472
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5482698932470753612}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 879354a225c89a643a9bc7ba32e013ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  unitAnimator: {fileID: 5567074195991603567}
 --- !u!1001 &5482698931364841036
 PrefabInstance:
   m_ObjectHideFlags: 0
