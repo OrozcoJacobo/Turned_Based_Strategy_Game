@@ -1,5 +1,6 @@
 using UnityEngine;
 using System;
+using UnityEngine.EventSystems;
 
 public class UnitActionSystem : MonoBehaviour
 {
@@ -38,6 +39,11 @@ public class UnitActionSystem : MonoBehaviour
             return;
         }
 
+        if(EventSystem.current.IsPointerOverGameObject())
+        {
+            return;
+        }
+
         if (TryHandleUnitSelection())
         {
             return;
@@ -52,21 +58,12 @@ public class UnitActionSystem : MonoBehaviour
         if(Input.GetMouseButtonDown(0))
         {
             GridPosition mouseGridPosition = LevelGrid.Instance.GetGridPosition(MouseWorld.GetPosition());
-            switch (selectedAction)
+            
+            if(selectedAction.IsValidActionGridPosition(mouseGridPosition)) 
             {
-                case MoveAction moveAction:
-                    if (selectedUnit.GetMoveAction().IsValidActionGridPosition(mouseGridPosition))
-                    {
-                        SetBusy();
-                        moveAction.Move(mouseGridPosition, ClearBusy);
-                    }
-                    break;
-                case SpinAction spinAction:
-                    SetBusy();
-                    spinAction.Spin(ClearBusy);
-                    break;
+                SetBusy();
+                selectedAction.TakeAction(mouseGridPosition, ClearBusy);
             }
-
         }
     }
 
@@ -89,6 +86,11 @@ public class UnitActionSystem : MonoBehaviour
             {
                 if(raycastHit.transform.TryGetComponent<Unit>(out Unit unit))
                 {
+                    if(unit == selectedUnit)
+                    {
+                        //Unit is already selected
+                        return false;
+                    }
                     SetSelectedUnit(unit);
                     return true;
                 }
@@ -105,13 +107,18 @@ public class UnitActionSystem : MonoBehaviour
  
     }
 
+    public void SetSelectedAction(BaseAction baseAction)
+    {
+        selectedAction = baseAction;    
+    }
+
     public Unit GetSelectedUnit()
     {
         return selectedUnit;
     }
 
-    public void SetSelectedAction(BaseAction baseAction)
+    public BaseAction GetSelectedAction()
     {
-        selectedAction = baseAction;    
+        return selectedAction;  
     }
 }
