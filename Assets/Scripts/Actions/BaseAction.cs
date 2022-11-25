@@ -11,4 +11,9 @@ public abstract class BaseAction : MonoBehaviour
     {
         unit = GetComponent<Unit>();
     }
+
+    //abstract is in order to force all the other actions to implement this 
+    public abstract string GetActionName();
+
+    //public abstract void TakeAction(GridPosition gridPosition, Action onActionComplete)
 }

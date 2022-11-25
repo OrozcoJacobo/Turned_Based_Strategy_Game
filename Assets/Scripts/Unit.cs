@@ -6,12 +6,13 @@ public class Unit : MonoBehaviour
     private GridPosition gridPosition;
     private MoveAction moveAction;
     private SpinAction spinAction;
-
+    private BaseAction[] baseActionArray;
 
     private void Awake()
     {
         moveAction = GetComponent<MoveAction>();
         spinAction = GetComponent<SpinAction>();
+        baseActionArray = GetComponents<BaseAction>();
     }
     private void Start()
     {
@@ -43,4 +44,9 @@ public class Unit : MonoBehaviour
         return gridPosition;
     }
 
+    //This exposes the base action array so it may be accessed by the UI
+    public BaseAction[] GetBaseActionArray()
+    {
+        return baseActionArray; 
+    }
 }
